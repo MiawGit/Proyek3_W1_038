@@ -1,0 +1,320 @@
+:root {
+    --color-primary: #24527a;
+    --color-background: #f2f5f7;
+    --color-text: #222222;
+    --spacing: 20px;
+}
+
+/* Mengatur box agar padding dan border
+   ikut dihitung dalam ukuran elemen */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background-color: var(--color-background);
+    color: var(--color-text);
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   CONTAINER
+   ========================= */
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+    padding: var(--spacing);
+
+    /* Membuat layout menggunakan Grid */
+    display: grid;
+
+    /* 3 kolom dengan ukuran sama */
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: var(--spacing);
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+header {
+    /* Header memenuhi 3 kolom */
+    grid-column: 1 / -1;
+
+    background-color: var(--color-primary);
+    color: white;
+
+    text-align: center;
+    padding: var(--spacing);
+
+    border-radius: 12px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+
+/* =========================
+   NAVIGATION
+   ========================= */
+
+nav {
+    /* Nav memenuhi 3 kolom */
+    grid-column: 1 / -1;
+
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing);
+
+    padding: var(--spacing);
+}
+
+.nav-link {
+    color: var(--color-primary);
+
+    padding: 8px 12px;
+
+    text-decoration: none;
+    font-weight: bold;
+
+    border-radius: 6px;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+/* Saat mouse berada di atas link */
+.nav-link:hover {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+
+/* Saat link dipilih menggunakan keyboard */
+.nav-link:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
+
+/* =========================
+   CARD
+   ========================= */
+
+.card {
+    background-color: white;
+
+    border: 1px solid #cccccc;
+    border-radius: 12px;
+
+    padding: 24px;
+
+    margin: 0;
+}
+
+
+/* Judul card */
+
+.card h2 {
+    margin-top: 0;
+
+    color: var(--color-primary);
+    font-size: 24px;
+
+    text-align: center;
+}
+
+
+/* Paragraf dalam card */
+
+.card p {
+    text-align: center;
+}
+
+
+/* =========================
+   FOTO PROFIL
+   ========================= */
+
+.card img {
+    display: block;
+
+    width: 150px;
+    height: 150px;
+
+    object-fit: cover;
+
+    border-radius: 25%;
+
+    margin: 0 auto var(--spacing);
+}
+
+
+/* =========================
+   KETERAMPILAN
+   ========================= */
+
+.keterampilan {
+    display: flex;
+
+    /* Skill tetap dalam satu baris */
+    flex-wrap: nowrap;
+
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.keterampilan p {
+    margin: 0;
+
+    padding: 8px 14px;
+
+    border: 1px solid var(--color-primary);
+    border-radius: 6px;
+
+    color: var(--color-primary);
+
+    /* Mencegah teks terlalu mudah
+       memaksa ukuran elemen */
+    white-space: nowrap;
+}
+
+
+/* =========================
+   BUTTON
+   ========================= */
+
+.button {
+    display: flex;
+    justify-content: center;
+
+    background-color: var(--color-primary);
+    color: white;
+
+    padding: 10px 20px;
+
+    border: none;
+    border-radius: 6px;
+
+    text-decoration: none;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* Saat mouse berada di atas tombol */
+
+.button:hover {
+    background-color: #183b59;
+
+    transform: translateY(-2px);
+}
+
+
+/* Saat tombol dipilih menggunakan keyboard */
+
+.button:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
+    background-color: var(--color-background);
+    color: var(--color-text);
+
+    text-align: center;
+
+    padding: var(--spacing);
+}
+
+
+/* =========================
+   RESPONSIVE / MOBILE
+   ========================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 100%;
+
+        padding: 12px;
+
+        /* Pada HP menjadi 1 kolom */
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+
+    /* Header kembali menjadi 1 kolom */
+
+    header {
+        grid-column: 1;
+    }
+
+
+    header h1 {
+        font-size: 26px;
+    }
+
+
+    /* Navigation */
+
+    nav {
+        grid-column: 1;
+
+        flex-direction: column;
+        align-items: center;
+
+        gap: 8px;
+    }
+
+
+    .nav-link {
+        width: 100%;
+
+        text-align: center;
+    }
+
+
+    /* Card */
+
+    .card {
+        padding: 18px;
+    }
+
+
+    /* Pada layar kecil, keterampilan
+       boleh turun agar tidak overflow */
+
+    .keterampilan {
+        flex-wrap: wrap;
+    }
+}
